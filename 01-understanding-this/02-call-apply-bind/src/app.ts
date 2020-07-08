@@ -1,16 +1,22 @@
-// Function
-function myFunction(text: string, text2: string = '') {
-    console.log('Function', this, text, text2);
-}
-
 // Object literal
 const myObj = {
     myMethod() {
         console.log('Object', this)
     }
 }
-// myObj.myMethod()
+
+// Function
+function myFunction(...text: string[]) {
+    console.log('Function', this, text);
+}
 
 myFunction('abc')
 myFunction.call(myObj, 'abc', 'def')
-myFunction.call([])
+
+// apply
+myFunction.apply(myObj, ['abc', 'def'])
+
+// bind
+const bindFunction = myFunction.bind(myObj, 'ABC')
+bindFunction()
+bindFunction('123')
