@@ -17,7 +17,7 @@ type CheckoutCard = Order & Stripe;
 type CheckoutPayPay = Order & PayPal;
 
 // Can also create an Intersection Type on the fly..
-type CheckoutABC = Order & {name: string};
+type CheckoutABC = Order & { name: string };
 
 const order: Order = {
     id: 'xj28s',
@@ -29,4 +29,9 @@ const orderCard: CheckoutCard = {
     ...order,
     card: '1000 2000 3000 4000',
     cvc: '123',
+};
+
+const orderPayPal: CheckoutPayPay = {
+    ...order,
+    email: 'abc@def'
 };
